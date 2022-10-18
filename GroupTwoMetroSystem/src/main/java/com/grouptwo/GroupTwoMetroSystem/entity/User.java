@@ -6,10 +6,11 @@ import javax.persistence.Table;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -17,9 +18,19 @@ import lombok.NoArgsConstructor;
 public class User {
 	
 	@Id
-	int userId;
-	String firstName;
-	String lastName;
-	String password;
-	double salary;
+	@Getter
+	@Setter
+	private int userId;
+	@Getter
+	@Setter
+	private String firstName;
+	@Getter
+	@Setter
+	private String lastName;
+	@Getter
+	@Setter
+	private String password;
+	@Getter
+	@Setter
+	private double salary;
 }
