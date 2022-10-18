@@ -8,12 +8,12 @@
 		<version>2.7.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.grouptwo</groupId>
-	<artifactId>MetroGroupTwo</artifactId>
+	<groupId>com.sujata</groupId>
+	<artifactId>user-springboot-rest-api-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>MetroGroupTwo</name>
-	<description>Metro System By Group Two!</description>
+	<name>user-springboot-rest-api-project</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -21,10 +21,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
