@@ -22,10 +22,10 @@ create table MetroTrans(
     constraint FirstStation foreign key(startStation) references MetroStation(stationId),
 	constraint SecondStation foreign key(destStation) references MetroStation(stationId));
     
-insert into MetroUsers(userFName, userSName, userPass) values ("Albert","Sufaj","1234", 100);
-insert into MetroUsers(userFName, userSName, userPass) values ("Jamie","Grant","123", 100);
-insert into MetroUsers(userFName, userSName, userPass) values ("Charlie","Carroll","00001", 100);
-insert into MetroUsers(userFName, userSName, userPass) values ("Georgia","Antoniou","password", 100);
+insert into MetroUsers(userFName, userSName, userPass, userBal) values ("Albert","Sufaj","1234", 100);
+insert into MetroUsers(userFName, userSName, userPass, userBal) values ("Jamie","Grant","123", 100);
+insert into MetroUsers(userFName, userSName, userPass, userBal) values ("Charlie","Carroll","00001", 100);
+insert into MetroUsers(userFName, userSName, userPass, userBal) values ("Georgia","Antoniou","password", 100);
 
 insert into metrostation values (1, "London"), (2,"Birmingham"), (3,"Sheffield"), (4,"Newcastle"), (5,"Edinburgh");
 
