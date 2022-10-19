@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Welcome to The Metro Station</h1>
+<form action="#" th:action="@{./addUser}" th:object="${signUpCommand}" method="post">
+Enter First Name: <input type="text" th:field="*{firstName}"><br><br>
+Enter Last Name: <input type="text" th:field="*{lastName}"><br><br>
+Enter Password : <input type="password" th:field="*{password}"><br><br>
+<input type="submit" value="Sign up">
+</form>
+<br><br>
+<p th:text="${message}" style="color: red"></p>
+</body>
+</html>
