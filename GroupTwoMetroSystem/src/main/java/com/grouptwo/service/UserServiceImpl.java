@@ -24,14 +24,7 @@ public class UserServiceImpl implements UserService {
 		return restTemplate.getForObject("http://localhost:8082/login/"+user.getUserId()+"/"+user.getPassword(), User.class);
 	}
 	@Override
-	public User addFunds(int userId, double addFunds) {
-		// TODO Auto-generated method stub
-		return userDao.addFunds(userId, addFunds);
+	public User addUser(User user) {
+		return userDao.insertEmployee(user.getFirstName(), user.getLastName(), user.getPassword(), 100);
 	}
-	@Override
-	public User removeFunds(int userId, double removeFunds) {
-		// TODO Auto-generated method stub
-		return userDao.removeFunds(userId, removeFunds);
-	}
-
 }
