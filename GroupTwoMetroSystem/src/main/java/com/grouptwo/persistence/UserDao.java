@@ -18,8 +18,8 @@ public interface UserDao extends JpaRepository<User, Integer>  {
 	@Query(value = "update metrousers set userBal = (:newBal) where userId = (:userId)", nativeQuery = true)
 	public User updateBalance(@Param("userId") int userId, @Param("newBal") double userBal);
 	
-	@Transactional
-	@Modifying
-	@Query(value = "insert into metrousers values(:fName,:sName,:pass,:bal)",nativeQuery = true)
-	public User insertUser(@Param("fName") String firstName,@Param("sName") String lastName, @Param("pass") String password,@Param("bal") double balance);
+//	@Transactional
+//	@Modifying
+//	@Query(value = "insert into metrousers values(:fName,:sName,:pass,:bal)",nativeQuery = true)
+//	public User insertUser(@Param("fName") String firstName,@Param("sName") String lastName, @Param("pass") String password,@Param("bal") double balance);
 }

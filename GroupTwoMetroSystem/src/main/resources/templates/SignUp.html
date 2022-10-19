@@ -5,8 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Welcome to The Metro Station</h1>
-<form action="#" th:action="@{./addUser}" th:object="${signUpCommand}" method="post">
+<h1>Welcome to The Metro Station</h1>   <!-- I had to change it to command in order to send the sign up back to login-->
+<form action="#" th:action="@{./addUser}" th:object="${command}" method="post">
 Enter First Name: <input type="text" th:field="*{firstName}"><br><br>
 Enter Last Name: <input type="text" th:field="*{lastName}"><br><br>
 Enter Password : <input type="password" th:field="*{password}"><br><br>

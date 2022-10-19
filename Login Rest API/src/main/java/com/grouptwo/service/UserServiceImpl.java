@@ -18,4 +18,17 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserByUserIdAndPassword(userID, Passowrd);
 	}
 
+	@Override
+	public boolean signUpUser(String fname, String lname, String Password) {
+		try {
+			int rows = userDao.insertUser(fname, lname, Password, 100.0);
+			if (rows > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return false;
+	}
+
 }

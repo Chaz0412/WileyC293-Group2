@@ -1,6 +1,7 @@
 package com.grouptwo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,15 +19,24 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User loginUser(User user) {
+		try {
+			return restTemplate.getForObject("http://localhost:8082/login/" + user.getUserId() + "/" + user.getPassword(),
+					User.class);
+		} catch (Exception e) {
+			return null;
+		}
 
-//		return userDao.getUserByUserNameAndPassword(user.getUserName(), user.getPassword());
-		return restTemplate.getForObject("http://localhost:8082/login/" + user.getUserId() + "/" + user.getPassword(),
-				User.class);
 	}
 
 	@Override
-	public User addUser(User user) {
-		return userDao.insertUser(user.getFirstName(), user.getLastName(), user.getPassword(), 100);
+	public Boolean addUser(User user) {
+		try {
+			return restTemplate.getForEntity("http://localhost:8082/signUp/" + user.getFirstName() + "/" + user.getLastName() 
+			+ "/" + user.getPassword(), boolean.class).getBody();
+		} catch (Exception e) {
+			return false;
+		}
+	
 	}
 
 }

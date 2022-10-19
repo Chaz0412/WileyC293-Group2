@@ -1,8 +1,10 @@
 package com.grouptwo.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +44,25 @@ public class UserController {
 	
 	@RequestMapping("/signUpPage")
 	public ModelAndView getSignUpPage() {
-		return new ModelAndView ("SignUp", "signUpCommand", new User());
+		return new ModelAndView ("SignUp", "command", new User());
+	}
+	
+	@RequestMapping("/addUser")
+	public ModelAndView insertUser(@ModelAttribute("command") User user) {
+		
+		ModelAndView modelAndView=new ModelAndView();
+		String message=null;
+		
+		if(userService.addUser(user)) {
+			message="User Added";
+		}
+		else {
+			message="User Not Added";
+		}
+		modelAndView.addObject("message", message);
+		
+		modelAndView.setViewName("Login");
+		
+		return modelAndView;
 	}
 }
