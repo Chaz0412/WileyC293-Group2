@@ -1,3 +1,5 @@
+
+</style>
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
 <head>
@@ -5,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Metro Station</h1>
+	<h1 align = "center">Metro Station</h1>
 	<hr>
+	<h2 style="color:blue;" th:text="'Welcome '+${session.user.firstName}+'!'"></h2>
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.userId}"></h2>
-	<h2 align = "right" th:text="'Your card balance is: '+${session.user.salary}"></h2>
-	<h2 th:text="'Welcome '+${session.user.firstName}+'!'"></h2>
+	<h2 align = "right" th:text="'Your card number is: '+${session.user.salary}"></h2>
 </body>
 </html>
