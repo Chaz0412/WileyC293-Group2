@@ -39,4 +39,9 @@ public class UserController {
 		}
 		return modelAndView;
 	}
+	
+	@RequestMapping("/signUpPage")
+	public ModelAndView getSignUpPage() {
+		return new ModelAndView ("SignUp", "signUpCommand", new User());
+	}
 }
