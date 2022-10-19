@@ -17,14 +17,7 @@ public class UserResource {
 	
 	@GetMapping(path = "/login/{uname}/{password}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public User loginResource(@PathVariable("uname") int userID,@PathVariable("password") String pwd) {
-		System.out.println(userID + " YOOOOOOOOOOO " + pwd);
-		User test = userService.loginUser(userID, pwd);
-		try {
-			System.out.println(test.getFirstName() + " DOES THIS WROK?????");
-		} catch (Exception e) {
-			System.out.println(" AINT NUDDAH DEYA?????");
-		}
-		return test;
+		return userService.loginUser(userID, pwd);
 	}
 	
 }
