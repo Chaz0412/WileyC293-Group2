@@ -11,14 +11,15 @@
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.userId}"></h2>
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.salary}"></h2>
 	<hr>
-<form action="#" th:action="@{./loginUser}" th:object="${command}" method="post">
-Enter Start Station : <input type="text" th:field="*{startStation}"><br><br>
-<!-- Enter Destination Station : <input type="radio" th:field="*{destStation}"
-			th:each="destStation : ${destStation}" th:value="${stations}"
-			th:text="${stations}">1 <br> <br> -->
-Enter Destination Station : <input type="text" th:field="*{destStation}"><br><br>
-<input type="submit" value="Log Journey">
-</form>
+<form action="#" th:action="@{./journeyPlanner}" th:object="${command}" method="post">
+		Select starting station : <select th:field="*{statName}">
+			<option th:each="stationName : ${statName}" th:value="${stationName}" th:text="${stationName}"></option>
+		</select><br> <br> 
+		Select destination station : <select th:field="*{statName}">
+			<option th:each="stationName : ${statName}" th:value="${stationName}" th:text="${stationName}"></option>
+		</select><br> <br> 
+		<button value="">Confirm Selection</button><br></br>
+	</form>
 <br><br>
 <p th:text="${message}" style="color: red"></p>
 </body>

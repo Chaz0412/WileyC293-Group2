@@ -11,10 +11,10 @@
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.userId}"></h2>
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.salary}"></h2>
 	<hr>
-<form action="#" th:action="@{./loginUser}" th:object="${command}" method="post">
-Enter Amount to add to card : <input type="text" th:field="*{salary}"><br><br>
-<input type="submit" value=" Add Funds">
-</form>
+	<h3 style="color:blue;">Select one of the options below to add funds</h3>
+	<button value="">Add £20</button><br></br>
+	<button value="">Add £50</button><br></br>
+	<button value="">Add £100</button><br></br>
 <br><br>
 <p th:text="${message}" style="color: red"></p>
 </body>
