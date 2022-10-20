@@ -14,14 +14,11 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@Autowired
-	private UserDao userDao;
-
 	@Override
 	public User loginUser(User user) {
 		try {
-			return restTemplate.getForObject("http://localhost:8082/login/" + user.getUserId() + "/" + user.getPassword(),
-					User.class);
+			return restTemplate.getForObject(
+					"http://localhost:8082/login/" + user.getUserId() + "/" + user.getPassword(), User.class);
 		} catch (Exception e) {
 			return null;
 		}
@@ -31,12 +28,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Boolean addUser(User user) {
 		try {
-			return restTemplate.getForEntity("http://localhost:8082/signUp/" + user.getFirstName() + "/" + user.getLastName() 
-			+ "/" + user.getPassword(), boolean.class).getBody();
+			return restTemplate.getForEntity("http://localhost:8082/signUp/" + user.getFirstName() + "/"
+					+ user.getLastName() + "/" + user.getPassword(), boolean.class).getBody();
 		} catch (Exception e) {
 			return false;
 		}
-	
+
 	}
 
 }
