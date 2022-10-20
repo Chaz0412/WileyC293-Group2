@@ -29,13 +29,13 @@ public class UserController {
 	@Autowired
 	private StationService stationService;
 	
-	@ModelAttribute("stationName")
-	List<String> getStations(){
-		return stationService.getAllStations().stream()
-				.map(Station::getStationName)
-				.distinct()
-				.collect(Collectors.toList());
-	}
+//	@ModelAttribute("allStations")
+//	List<String> getStations(){
+//		return stationService.getAllStations().stream()
+//				.map(Station::getStationName)
+//				.distinct()
+//				.collect(Collectors.toList());
+//	}
 	
 	@RequestMapping("/")
 	public ModelAndView getLoginPage() {
@@ -115,9 +115,17 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("./logJourneyPage")
+	@RequestMapping("/logJourneyPage")
 	public ModelAndView journeyPlanner() {
-		ModelAndView modelAndView=new ModelAndView();
+		//ModelAndView modelAndView=new ModelAndView();
+		//modelAndView.setViewName("LogJourney");
+		//return modelAndView;
+		return new ModelAndView("LogJourney","command",new Station());
+	}
+	
+	@RequestMapping("/logJourney")
+	public ModelAndView getAllStations() {
+		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("LogJourney");
 		return modelAndView;
 	}
