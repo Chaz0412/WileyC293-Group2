@@ -1,5 +1,9 @@
 package com.grouptwo.controller;
 
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
@@ -12,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.grouptwo.entity.Station;
 import com.grouptwo.entity.User;
+import com.grouptwo.service.StationService;
 import com.grouptwo.service.UserService;
 
 @Controller
@@ -20,6 +26,16 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private StationService stationService;
+	
+	@ModelAttribute("stationName")
+	List<String> getStations(){
+		return stationService.getAllStations().stream()
+				.map(Station::getStationName)
+				.distinct()
+				.collect(Collectors.toList());
+	}
 	
 	@RequestMapping("/")
 	public ModelAndView getLoginPage() {
@@ -96,6 +112,13 @@ public class UserController {
 			modelAndView.addObject("message", message);
 			modelAndView.setViewName("AddFunds");
 		}	
+		return modelAndView;
+	}
+	
+	@RequestMapping("./logJourneyPage")
+	public ModelAndView journeyPlanner() {
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("LogJourney");
 		return modelAndView;
 	}
 
