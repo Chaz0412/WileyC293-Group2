@@ -87,7 +87,6 @@ public class UserController {
 		
 		if (userService.changeBalance(user.getUserId(), money)) {
 			System.out.println(userService.loginUser(user).getSalary() + " New Balance!");
-			//user.setSalary(user.getSalary() + money);
 			session.setAttribute("user", userService.loginUser(user));
 			message = "Funds Added!";
 			modelAndView.addObject("message", message);
