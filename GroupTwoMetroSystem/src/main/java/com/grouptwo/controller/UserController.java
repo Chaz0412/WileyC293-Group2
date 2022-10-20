@@ -72,7 +72,6 @@ public class UserController {
 		return modelAndView;
 	}
 	
-
 	@RequestMapping("/addFundsPage")
 	public ModelAndView addFundsPage() {
 		ModelAndView modelAndView=new ModelAndView();
