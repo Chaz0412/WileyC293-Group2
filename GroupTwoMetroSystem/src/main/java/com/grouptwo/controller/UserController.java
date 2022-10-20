@@ -16,7 +16,6 @@ import com.grouptwo.entity.User;
 import com.grouptwo.service.UserService;
 
 @Controller
-@SessionAttributes({"user"})
 public class UserController {
 
 	@Autowired
@@ -33,12 +32,11 @@ public class UserController {
 	}
 	
 	@RequestMapping("/loginUser")
-	public ModelAndView loginCheck(@ModelAttribute("command") User user/*,HttpSession session*/) {
+	public ModelAndView loginCheck(@ModelAttribute("command") User user, HttpSession session) {
 		ModelAndView modelAndView=new ModelAndView();
 		User usr=userService.loginUser(user);
 		if(usr!=null) {
-			modelAndView.addObject("user", usr);  //request Scope
-//			session.setAttribute("user", user);
+			session.setAttribute("user", usr);
 			modelAndView.setViewName("Menu");
 		}
 		else {
@@ -85,10 +83,12 @@ public class UserController {
 		String message=null;
 		double money = Double.parseDouble(request.getParameter("funds"));
 		User user = (User)session.getAttribute("user");
+		System.out.println(user.getSalary() + " Old Balance!");
 		
 		if (userService.changeBalance(user.getUserId(), money)) {
-			user.setSalary(user.getSalary() + money);
-			session.setAttribute("user", user);
+			System.out.println(userService.loginUser(user).getSalary() + " New Balance!");
+			//user.setSalary(user.getSalary() + money);
+			session.setAttribute("user", userService.loginUser(user));
 			message = "Funds Added!";
 			modelAndView.addObject("message", message);
 			modelAndView.setViewName("Menu");
