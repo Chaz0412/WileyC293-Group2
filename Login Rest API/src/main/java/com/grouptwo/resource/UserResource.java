@@ -27,4 +27,8 @@ public class UserResource {
 		return userService.signUpUser(userFName, userSName, userPass);
 	}
 	
+	@PutMapping(path = "/AddFunds/{id}/{val}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public boolean balanceResource(@PathVariable("id") int userId ,@PathVariable("val") double increment) {
+		return userService.changeBalance(userId, increment);
+	}
 }

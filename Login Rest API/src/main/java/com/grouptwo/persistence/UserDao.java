@@ -22,4 +22,9 @@ public interface UserDao extends JpaRepository<User, Integer> {
 	public int insertUser(@Param("fname")String fname, @Param("lname") 
 		String lname, @Param("pass") String password, @Param("bal") double bal);
 	
+	@Transactional
+	@Modifying
+	@Query(value = "update metrousers set userBal = (:newBal) where userId = (:userId)", nativeQuery = true)
+	public int updateBalance(@Param("userId") int userId, @Param("newBal") double userBal);
+	
 }

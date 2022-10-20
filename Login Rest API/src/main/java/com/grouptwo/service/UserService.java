@@ -8,4 +8,6 @@ public interface UserService {
 	
 	public boolean signUpUser(String fname, String lname, String Password);
 
+	public boolean changeBalance(int userId, double increment);
+
 }
