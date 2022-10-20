@@ -8,5 +8,5 @@ public interface UserService {
 	
 	public User loginUser(User user);
 	public Boolean addUser(User user);
-	Boolean changeBalance(User user, int increment);
+	Boolean changeBalance(int userId, double increment);
 }

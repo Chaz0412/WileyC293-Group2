@@ -12,9 +12,22 @@
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.salary}"></h2>
 	<hr>
 	<h3 style="color:blue;">Select one of the options below to add funds</h3>
-	<button value="">Add £20</button><br></br>
-	<button value="">Add £50</button><br></br>
-	<button value="">Add £100</button><br></br>
+	<!--  <button id="twenty" onClick="location.href='./addFundUser'" value=20>Add £20</button><br></br>
+	<button id="fifty" onClick="location.href='./addFundUser'" value=50>Add £50</button><br></br>
+	<button id="hundred" onClick="location.href='./addFundUser'" value=100>Add £100</button><br></br> -->
+	
+	<form action="./addFundUser" method = "get">
+	Enter Amount to Add : <select  name="funds">
+	<option value=5.0>5</option>
+	<option value=10.0>10</option>
+	<option value=20.0>20</option>
+	<option value=50.0>50</option>
+	</select><br><br>
+	
+	<input type="submit" value="Add Funds">
+	
+	</form>
+	<a href="./menu">Return To Menu</a>
 <br><br>
 <p th:text="${message}" style="color: red"></p>
 </body>

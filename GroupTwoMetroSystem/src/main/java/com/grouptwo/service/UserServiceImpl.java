@@ -39,10 +39,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Boolean changeBalance(User user, int increment) {
-		HttpHeaders headers = new HttpHeaders();
-		HttpEntity<User> entity = new HttpEntity<User>(headers);
-		return restTemplate.exchange("http://localhost:8082/AddFunds/"+increment, HttpMethod.PUT, entity, boolean.class).getBody();
+	public Boolean changeBalance(int userId, double increment) {
+		try {
+			HttpHeaders headers = new HttpHeaders();
+			HttpEntity<User> entity = new HttpEntity<User>(headers);
+			return restTemplate.exchange("http://localhost:8082/AddFunds/"+userId+"/"
+					+increment, HttpMethod.PUT, entity, boolean.class).getBody();
+		} catch (Exception e) {
+			return false;
+		}
+
 	}
 
 }

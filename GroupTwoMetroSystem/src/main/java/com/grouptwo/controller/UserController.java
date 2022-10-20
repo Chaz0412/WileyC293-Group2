@@ -2,6 +2,7 @@ package com.grouptwo.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,11 @@ public class UserController {
 	@RequestMapping("/")
 	public ModelAndView getLoginPage() {
 		return new ModelAndView("Login","command",new User());
+	}
+	
+	@RequestMapping("/menu")
+	public ModelAndView getMenuPage() {
+		return new ModelAndView("Menu");
 	}
 	
 	@RequestMapping("/loginUser")
@@ -66,4 +72,33 @@ public class UserController {
 		return modelAndView;
 	}
 	
+
+	@RequestMapping("/addFundsPage")
+	public ModelAndView addFundsPage() {
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("AddFunds");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/addFundUser")
+	public ModelAndView addFunds(HttpServletRequest request, HttpSession session) {
+		ModelAndView modelAndView=new ModelAndView();
+		String message=null;
+		double money = Double.parseDouble(request.getParameter("funds"));
+		User user = (User)session.getAttribute("user");
+		
+		if (userService.changeBalance(user.getUserId(), money)) {
+			user.setSalary(user.getSalary() + money);
+			session.setAttribute("user", user);
+			message = "Funds Added!";
+			modelAndView.addObject("message", message);
+			modelAndView.setViewName("Menu");
+		} else {
+			message = "Funds Not Added!";
+			modelAndView.addObject("message", message);
+			modelAndView.setViewName("AddFunds");
+		}	
+		return modelAndView;
+	}
+
 }
