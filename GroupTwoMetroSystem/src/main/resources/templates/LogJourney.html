@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 align = "center">Metro Station</h1>
+	<hr>
+	<h2 style="color:blue;" th:text="'Welcome '+${session.user.firstName}+'!'"></h2>
+	<h2 align = "right" th:text="'Your card number is: '+${session.user.userId}"></h2>
+	<h2 align = "right" th:text="'Your card number is: '+${session.user.salary}"></h2>
+	<hr>
+<form action="#" th:action="@{./loginUser}" th:object="${command}" method="post">
+Enter Start Station : <input type="text" th:field="*{startStation}"><br><br>
+<!-- Enter Destination Station : <input type="radio" th:field="*{destStation}"
+			th:each="destStation : ${destStation}" th:value="${stations}"
+			th:text="${stations}">1 <br> <br> -->
+Enter Destination Station : <input type="text" th:field="*{destStation}"><br><br>
+<input type="submit" value="Log Journey">
+</form>
+<br><br>
+<p th:text="${message}" style="color: red"></p>
+</body>
+</html>
