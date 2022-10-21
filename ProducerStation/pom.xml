@@ -8,12 +8,12 @@
 		<version>2.7.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.grouptwo</groupId>
-	<artifactId>employee-assignment-con</artifactId>
+	<groupId>com.jamie</groupId>
+	<artifactId>user-springboot-rest-api-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>StationProducer</name>
-	<description>Metro</description>
+	<name>user-springboot-rest-api-project</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

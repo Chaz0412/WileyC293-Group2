@@ -1,10 +1,10 @@
-package com.grouptwo.entity;
+package com.grouptwo.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StationProducerApplicationTests {
+class UserSpringbootRestApiProjectApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -5,22 +5,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 align = "center">Metro Station</h1>
-	<hr>
+	<h1 align = "center">Metro Station</h1>
 	<h2 style="color:blue;" th:text="'Welcome '+${session.user.firstName}+'!'"></h2>
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.userId}"></h2>
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.salary}"></h2>
-	<hr>
-	<form action="#" th:action="@{./logJourney}" th:object="${command}" method="post">
-		Select starting station : <select th:field="*{stationName}">
-			<option th:each="stationName : ${allStations}" th:value="${stationName}"></option>
-		</select><br> <br> 
-		Select destination station : <select th:field="*{stationName}">
-			<option th:each="stationNameTo : ${allStations}" th:value="${stationNameTo}"></option>
-		</select><br> <br> 
-		<button value="">Confirm Selection</button><br></br>
-	</form>
 <br><br>
-<p th:text="${message}" style="color: red"></p>
+
+	<p th:text="${message}" style="color: red"></p>
+	<a href="./menu">GoTo Menu Page</a>
 </body>
 </html>

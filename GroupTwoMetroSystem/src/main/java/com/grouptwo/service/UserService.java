@@ -1,6 +1,5 @@
 package com.grouptwo.service;
 
-import org.springframework.http.ResponseEntity;
 
 import com.grouptwo.entity.User;
 

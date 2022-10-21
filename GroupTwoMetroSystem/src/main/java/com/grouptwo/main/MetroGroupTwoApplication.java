@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication(scanBasePackages = "com.grouptwo")
-@EntityScan(basePackages = "com.grouptwo.entity")
-@EnableJpaRepositories(basePackages = "com.grouptwo.persistence")
 public class MetroGroupTwoApplication {
 
 	public static void main(String[] args) {

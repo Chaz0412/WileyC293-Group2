@@ -1,13 +1,12 @@
 package com.grouptwo.controller;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
+import java.util.stream.Collectors; 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.grouptwo.entity.Station;
+
 import com.grouptwo.entity.User;
 import com.grouptwo.service.StationService;
 import com.grouptwo.service.UserService;
@@ -26,16 +26,18 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
 	@Autowired
 	private StationService stationService;
 	
-//	@ModelAttribute("allStations")
-//	List<String> getStations(){
-//		return stationService.getAllStations().stream()
-//				.map(Station::getStationName)
-//				.distinct()
-//				.collect(Collectors.toList());
-//	}
+	@ModelAttribute("stationNames")
+	List<String> getStations(){
+		return stationService.getAllStations().stream()
+				.map(Station::getStationName)
+				.distinct()
+				.collect(Collectors.toList());
+	}
+
 	
 	@RequestMapping("/")
 	public ModelAndView getLoginPage() {
@@ -60,6 +62,7 @@ public class UserController {
 			modelAndView.setViewName("Login");
 		}
 		return modelAndView;
+		
 	}
 	
 	@RequestMapping("/signUpPage")
@@ -69,7 +72,6 @@ public class UserController {
 	
 	@RequestMapping("/addUser")
 	public ModelAndView insertUser(@ModelAttribute("command") User user) {
-		
 		ModelAndView modelAndView=new ModelAndView();
 		String message=null;
 		
@@ -79,8 +81,8 @@ public class UserController {
 		else {
 			message="User Not Added";
 		}
-		modelAndView.addObject("message", message);
 		
+		modelAndView.addObject("message", message);
 		modelAndView.setViewName("Login");
 		
 		return modelAndView;
@@ -99,10 +101,8 @@ public class UserController {
 		String message=null;
 		double money = Double.parseDouble(request.getParameter("funds"));
 		User user = (User)session.getAttribute("user");
-		System.out.println(user.getSalary() + " Old Balance!");
 		
 		if (userService.changeBalance(user.getUserId(), money)) {
-			System.out.println(userService.loginUser(user).getSalary() + " New Balance!");
 			session.setAttribute("user", userService.loginUser(user));
 			message = "Funds Added!";
 			modelAndView.addObject("message", message);
@@ -115,19 +115,19 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/logJourneyPage")
-	public ModelAndView journeyPlanner() {
-		//ModelAndView modelAndView=new ModelAndView();
-		//modelAndView.setViewName("LogJourney");
-		//return modelAndView;
-		return new ModelAndView("LogJourney","command",new Station());
-	}
-	
-	@RequestMapping("/logJourney")
-	public ModelAndView getAllStations() {
-		ModelAndView modelAndView = new ModelAndView();
+	@RequestMapping("/LogJourneyPage")
+	public ModelAndView LogJourneyPage() {
+		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("LogJourney");
 		return modelAndView;
 	}
+	
+	@RequestMapping("/LogJourney")
+	public ModelAndView LogJourney() {
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("Menu");
+		return modelAndView;
+	}
+	
 
 }
