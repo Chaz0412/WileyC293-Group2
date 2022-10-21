@@ -2,11 +2,11 @@ package com.grouptwo.service;
 
 import java.util.Collection;
 
-import com.grouptwo.entity.Transaction;
+import com.grouptwo.entity.Transactions;
 
 public interface TransactionService {
 
-public Collection<Transaction> getAllTransactions();
+public Collection<Transactions> getAllTransactions();
 	
-	public Transaction getTransById(int cardId);
+	public Collection<Transactions> getTransById(int cardId);
 }

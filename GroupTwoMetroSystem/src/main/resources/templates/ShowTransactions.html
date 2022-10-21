@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Employee Management System</h1>
+	<hr>
+	<h2 th:text="'Welcome '+${session.user.firstName}+'!'"></h2>
+	<hr>
+	<h2>Transaction Details</h2>
+	<hr>
+	<table border="1">
+		<!-- tr: table row -->
+		<tr>
+			<!-- th : table heading -->
+			<th>Transaction ID</th>
+			<th>Card ID</th>
+			<th>Start Destination</th>
+			<th>End Destination</th>
+			<th>Swipe TIme</th>
+			<th>Swipe Out Time</th>
+			<th>Fee</th>
+		</tr>
+		<tr th:each="transactions : ${transactions}">
+			<!--td: table data  -->
+			<td th:text="${transactions.transId}"></td>
+			<td th:text="${transactions.cardId}"></td>
+			<td th:text="${transactions.startStation}"></td>
+			<td th:text="${transactions.destStation}"></td>
+			<td th:text="${transactions.swipeInTime}"></td>
+			<td th:text="${transactions.swipeOutTime}"></td>
+			<td th:text="${transactions.fee}"></td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<a href="./menu">GoTo Menu Page</a>
+</body>
+</html>

@@ -2,23 +2,22 @@ package com.grouptwo.controller;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors; 
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.grouptwo.entity.Station;
-
+import com.grouptwo.entity.Transactions;
 import com.grouptwo.entity.User;
 import com.grouptwo.service.StationService;
+import com.grouptwo.service.TransactionService;
 import com.grouptwo.service.UserService;
 
 @Controller
@@ -29,6 +28,9 @@ public class UserController {
 
 	@Autowired
 	private StationService stationService;
+	
+	@Autowired
+	private TransactionService transactionService;
 	
 	@ModelAttribute("stationNames")
 	List<String> getStations(){
@@ -126,6 +128,21 @@ public class UserController {
 	public ModelAndView LogJourney() {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("Menu");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/showTransactions")
+	public ModelAndView showAllEmployeesController(HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		User user = (User)session.getAttribute("user");
+		
+		Collection<Transactions> transactionsList = 
+				transactionService.getTransById(user.getUserId());
+		
+		modelAndView.addObject("transactions", transactionsList);
+		modelAndView.setViewName("ShowTransactions");
+		
 		return modelAndView;
 	}
 	
