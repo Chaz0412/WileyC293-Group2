@@ -125,11 +125,32 @@ public class UserController {
 	}
 	
 	@RequestMapping("/LogJourney")
-	public ModelAndView LogJourney() {
+	public ModelAndView LogJourney(HttpServletRequest request, HttpSession session) {
 		ModelAndView modelAndView=new ModelAndView();
+		String message=null;
+		int start = Integer.parseInt(request.getParameter("start"));
+		int dest = Integer.parseInt(request.getParameter("dest"));
+		User user = (User)session.getAttribute("user");
+		System.out.println(start);
+		System.out.println(dest);
+		System.out.println(user.getUserId());
 		modelAndView.setViewName("Menu");
 		return modelAndView;
 	}
+	
+//	@RequestMapping("/LogJourneyPage")
+//	public ModelAndView LogJourneyPage() {
+//		ModelAndView modelAndView=new ModelAndView();
+//		modelAndView.setViewName("LogJourney");
+//		return modelAndView;
+//	}
+//	
+//	@RequestMapping("/LogJourney")
+//	public ModelAndView LogJourney() {
+//		ModelAndView modelAndView=new ModelAndView();
+//		modelAndView.setViewName("Menu");
+//		return modelAndView;
+//	}
 	
 //	@RequestMapping("/LogJourneyPage")
 //	public ModelAndView LogJourneyPage() {
