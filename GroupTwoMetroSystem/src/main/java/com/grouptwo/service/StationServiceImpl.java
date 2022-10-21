@@ -19,14 +19,12 @@ public class StationServiceImpl implements StationService{
 	@Override
 	public Collection<Station> getAllStations() {
 		try {
-			System.out.println("Helloo PEople");
 			StationList stationNames = restTemplate.getForObject(
-					"http://localhost:8084/station",
+					"http://localhost:8086/station",
 					StationList.class);
 			System.out.println(stationNames.toString());
 			return stationNames.getStations();
 		} catch (Exception e) {
-			System.out.println("i am here for some reason?!?");
 			e.printStackTrace();
 			return null;
 		}
