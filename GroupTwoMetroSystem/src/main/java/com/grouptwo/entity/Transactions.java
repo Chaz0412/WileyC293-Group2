@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import java.sql.Date;
+import java.time.format.DateTimeFormatter;  
+
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,14 +17,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="MetroTrans")
-public class Transactions {
+public class Transaction {
 
 	@Id
-	private int transId;
-	private int cardId;
-	private int startStation;
-	private int destStation;
-	private java.sql.Timestamp swipeInTime;
-	private java.sql.Timestamp swipeOutTime;
-	private double fee;
+	int transId;
+    int cardId;
+    int startStation;
+    int destStation;
+    Date swipeInTime;
+    Date swipeOutTime;
 }
