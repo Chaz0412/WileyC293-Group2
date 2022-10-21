@@ -123,11 +123,22 @@ public class UserController {
 	}
 	
 	@RequestMapping("/LogJourney")
-	public ModelAndView LogJourneyController(@ModelAttribute("journey") Station Station, HttpServletRequest request) {
+	public ModelAndView LogJourneyController(@ModelAttribute("journey") Station Station, HttpServletRequest request, HttpSession session) {
 		ModelAndView modelAndView=new ModelAndView();
 		String[] stations = request.getParameterValues("stationName");
-		System.out.println("Start: " +stations[0] + " End: " +stations[1]);
-		modelAndView.setViewName("Menu");
+		String message=null;
+		User user = (User)session.getAttribute("user");
+		
+		if (transactionService.addTransaction(user.getUserId(), stations[0], stations[1])) {
+			session.setAttribute("user", userService.loginUser(user));
+			message = "Transaction Completed";
+			modelAndView.addObject("message", message);
+			modelAndView.setViewName("Menu");
+		} else {
+			message = "Transaction Failed";
+			modelAndView.addObject("message", message);
+			modelAndView.setViewName("Menu");
+		}
 		return modelAndView;
 	}
 	
@@ -137,8 +148,10 @@ public class UserController {
 		
 		User user = (User)session.getAttribute("user");
 		
+		
 		Collection<Transactions> transactionsList = 
 				transactionService.getTransById(user.getUserId());
+		
 		
 		modelAndView.addObject("transactions", transactionsList);
 		modelAndView.setViewName("ShowTransactions");

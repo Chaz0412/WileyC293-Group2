@@ -22,9 +22,9 @@ public class TransactionsResource {
 				
 	}
 	
-	@PutMapping(path = "/addTrans/{id}/{start}/{dest}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/addTrans/{id}/{start}/{dest}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public boolean balanceResource(@PathVariable("id") int cardId ,@PathVariable("start") int startStation, @PathVariable("dest") int destStation) {
 
-		return transactionsService.AddTransaction( cardId, startStation, destStation);
+		return transactionsService.AddTransaction(cardId, startStation, destStation);
 	}
 }

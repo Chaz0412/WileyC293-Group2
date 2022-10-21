@@ -20,7 +20,7 @@ public interface TransactionsDao extends JpaRepository<Transactions, Integer> {
 	
 	@Transactional
 	@Modifying
-	@Query(value = "insert into metrotrans(cardId,startStation,destStation,swipeInTime, swipeOutTime, fees) "
+	@Query(value = "insert into metrotrans(cardId,startStation,destStation,swipeInTime, swipeOutTime, fee) "
 			+ "values(:id,:start, :dest,:inTime, :outTime, :fee)",nativeQuery = true)
 	public int insertTransaction(@Param("id") int id,@Param("start") int startStation, @Param("dest")int destStation, @Param("inTime") Timestamp startTime,@Param("outTime") Timestamp destTime,
 			@Param("fee") double fees);
