@@ -10,7 +10,15 @@
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.userId}"></h2>
 	<h2 align = "right" th:text="'Your card number is: '+${session.user.salary}"></h2>
 <br><br>
-
+	<form action="#" th:action="@{./logJourney}" th:object="${command}" method="post">
+		Enter Starting Station: <select th:field="*{stationName}">
+			<option th:each="stationName : ${stationNames}" th:value="${stationName}" th:text="${stationName}"></option>
+			</select><br> <br> 
+		Enter Destination Station: <select th:field="*{stationName}">
+			<option th:each="stationName : ${stationNames}" th:value="${stationName}" th:text="${stationName}"></option>
+			</select><br> <br> 
+			<input type="submit" value="Log Journey">
+	</form>
 	<p th:text="${message}" style="color: red"></p>
 	<a href="./menu">GoTo Menu Page</a>
 </body>

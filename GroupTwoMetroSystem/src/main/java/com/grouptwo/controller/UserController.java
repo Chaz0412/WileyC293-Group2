@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.grouptwo.entity.Station;
-
+import com.grouptwo.entity.Transaction;
 import com.grouptwo.entity.User;
 import com.grouptwo.service.StationService;
 import com.grouptwo.service.UserService;
@@ -117,13 +117,11 @@ public class UserController {
 	
 	@RequestMapping("/LogJourneyPage")
 	public ModelAndView LogJourneyPage() {
-		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.setViewName("LogJourney");
-		return modelAndView;
+		return new ModelAndView("LogJourney", "command", new Station());
 	}
 	
 	@RequestMapping("/LogJourney")
-	public ModelAndView LogJourney() {
+	public ModelAndView LogJourneyController(@ModelAttribute("command") Station station) {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("Menu");
 		return modelAndView;
