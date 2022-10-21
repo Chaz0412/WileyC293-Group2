@@ -3,6 +3,8 @@ package com.grouptwo.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import java.sql.Date;
 import java.time.format.DateTimeFormatter;  
 
 
@@ -22,6 +24,6 @@ public class Transaction {
     int cardId;
     int startStation;
     int destStation;
-    DateTimeFormatter swipeInTime;
-    DateTimeFormatter swipeOutTime;
+    Date swipeInTime;
+    Date swipeOutTime;
 }
