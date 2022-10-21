@@ -131,6 +131,19 @@ public class UserController {
 		return modelAndView;
 	}
 	
+//	@RequestMapping("/LogJourneyPage")
+//	public ModelAndView LogJourneyPage() {
+//		return new ModelAndView("LogJourney", "command", new Transaction());
+//	}
+//	
+//	@RequestMapping("/LogJourney")
+//	public ModelAndView LogJourneyController(@ModelAttribute("command") Transaction transaction, HttpServletRequest request) {
+//		ModelAndView modelAndView=new ModelAndView();
+//		String start = request.getParameter("stationName"); 
+//		modelAndView.setViewName("Menu");
+//		return modelAndView;
+//	}
+	
 	@RequestMapping("/showTransactions")
 	public ModelAndView showAllEmployeesController(HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
