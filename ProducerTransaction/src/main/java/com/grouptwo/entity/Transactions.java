@@ -18,8 +18,8 @@ public class Transactions {
 	@Id
 	private int transId;
 	private int cardId;
-	private String startStation;
-	private String destStation;
+	private int startStation;
+	private int destStation;
 	private java.sql.Timestamp swipeInTime;
 	private java.sql.Timestamp swipeOutTime;
 	private double fee;

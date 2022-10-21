@@ -119,51 +119,17 @@ public class UserController {
 	
 	@RequestMapping("/LogJourneyPage")
 	public ModelAndView LogJourneyPage() {
-		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.setViewName("LogJourney");
-		return modelAndView;
+		return new ModelAndView("LogJourney", "journey", new Station());
 	}
 	
 	@RequestMapping("/LogJourney")
-	public ModelAndView LogJourney(HttpServletRequest request, HttpSession session) {
+	public ModelAndView LogJourneyController(@ModelAttribute("journey") Station Station, HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();
-		String message=null;
-		int start = Integer.parseInt(request.getParameter("start"));
-		int dest = Integer.parseInt(request.getParameter("dest"));
-		User user = (User)session.getAttribute("user");
-		System.out.println(start);
-		System.out.println(dest);
-		System.out.println(user.getUserId());
+		String[] stations = request.getParameterValues("stationName");
+		System.out.println("Start: " +stations[0] + " End: " +stations[1]);
 		modelAndView.setViewName("Menu");
 		return modelAndView;
 	}
-	
-//	@RequestMapping("/LogJourneyPage")
-//	public ModelAndView LogJourneyPage() {
-//		ModelAndView modelAndView=new ModelAndView();
-//		modelAndView.setViewName("LogJourney");
-//		return modelAndView;
-//	}
-//	
-//	@RequestMapping("/LogJourney")
-//	public ModelAndView LogJourney() {
-//		ModelAndView modelAndView=new ModelAndView();
-//		modelAndView.setViewName("Menu");
-//		return modelAndView;
-//	}
-	
-//	@RequestMapping("/LogJourneyPage")
-//	public ModelAndView LogJourneyPage() {
-//		return new ModelAndView("LogJourney", "command", new Transaction());
-//	}
-//	
-//	@RequestMapping("/LogJourney")
-//	public ModelAndView LogJourneyController(@ModelAttribute("command") Transaction transaction, HttpServletRequest request) {
-//		ModelAndView modelAndView=new ModelAndView();
-//		String start = request.getParameter("stationName"); 
-//		modelAndView.setViewName("Menu");
-//		return modelAndView;
-//	}
 	
 	@RequestMapping("/showTransactions")
 	public ModelAndView showAllEmployeesController(HttpSession session) {
