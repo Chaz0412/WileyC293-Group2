@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grouptwo.entity.User;
-import com.grouptwo.persistence.*;
+import com.grouptwo.persistence.UserDao;
 
 @Service
 public class UserServiceImpl implements UserService {
